@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  vietnam-nlp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vietnam-nlp-container
