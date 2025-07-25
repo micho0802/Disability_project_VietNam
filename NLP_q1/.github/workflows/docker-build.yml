@@ -17,5 +17,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build Docker image
-        run: docker build -t vietnam-nlp ./NLP_q1
+      - name: Build Docker Image
+        run: |
+          docker build -t vietnam-nlp ./NLP_q1
+
+      - name: Run NLP Pipeline in Docker
+        run: |
+          docker run --rm vietnam-nlp
+
