@@ -21,7 +21,6 @@ jobs:
         run: |
           docker build -t vietnam-nlp -f NLP_q1/Dockerfile NLP_q1
 
-
       - name: Run NLP Pipeline in Docker
         run: |
           docker run --rm vietnam-nlp
