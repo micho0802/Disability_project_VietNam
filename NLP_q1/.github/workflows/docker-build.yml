@@ -19,7 +19,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t vietnam-nlp ./NLP_q1
+          docker build -t vietnam-nlp NLP_q1
 
       - name: Run NLP Pipeline in Docker
         run: |
