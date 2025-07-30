@@ -1,3 +1,4 @@
 youtube-search-python==1.6.6
 pytube==15.0.0
 httpx<0.24
+pytest>=7.0

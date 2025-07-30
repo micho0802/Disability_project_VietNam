@@ -1,0 +1,30 @@
+name: Docker Build and Run Scraper
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: docker build -t vsl-scraper .
+
+      - name: Run scraper in Docker container
+        run: docker run --rm -v ${{ github.workspace }}/build_and_process/app:/app/app vsl-scraper
+
+      - name: Upload JSON output as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsl-json-output
+          path: build_and_process/app/vietnamese_sign_language_videos.json
