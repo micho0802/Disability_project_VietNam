@@ -1,7 +1,6 @@
 import os
 import json
-from app.main import search_vsl_videos, extract_video_metadata
-
+from app.main import search_vsl_videos, extract_video_metadata, main
 
 def test_video_search_limit():
     """Test that search returns exactly N videos"""
@@ -22,8 +21,14 @@ def test_metadata_fields():
 def test_json_output():
     """Test if JSON file is created and readable"""
     filepath = "vietnamese_sign_language_videos.json"
+
+    # Run scraper
+    main()
+
     assert os.path.exists(filepath)
+
     with open(filepath, encoding="utf-8") as f:
         data = json.load(f)
+
     assert isinstance(data, list)
     assert "title" in data[0]
