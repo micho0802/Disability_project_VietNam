@@ -3,7 +3,7 @@ from pytube import YouTube
 import json
 import time
 
-def search_vsl_videos(keyword="Ngôn ngữ kí hiệu", max_results=50):
+def search_vsl_videos(keyword="Ngôn ngữ kí hiệu Việt Nam", max_results=50):
     print(f"Searching for: {keyword}")
     videos = []
     search = VideosSearch(keyword, limit=20)
@@ -56,7 +56,7 @@ def extract_video_metadata(video_info):
     return metadata
 
 def main():
-    vsl_videos = search_vsl_videos("Vietnamese sign language", max_results=50)
+    vsl_videos = search_vsl_videos("Ngôn ngữ kí hiệu Việt Nam", max_results=50)
     all_metadata = []
 
     for video in vsl_videos:
