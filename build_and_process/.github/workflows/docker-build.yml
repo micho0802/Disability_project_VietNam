@@ -11,18 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout full repository
         uses: actions/checkout@v3
 
-      - name: Build Docker image
-        working-directory: build_and_process
-        run: docker build -t vsl-scraper .
+      - name: Build Docker image from subdirectory
+        run: docker build -t vsl-scraper -f build_and_process/Dockerfile build_and_process/
 
-      - name: Run scraper in Docker container
-        working-directory: build_and_process
+      - name: Run scraper inside Docker
         run: docker run --rm -v ${{ github.workspace }}/build_and_process/app:/app/app vsl-scraper
 
-      - name: Upload JSON output as artifact
+      - name: Upload JSON output
         uses: actions/upload-artifact@v4
         with:
           name: vsl-json-output
